@@ -11,9 +11,9 @@ TCQKX XT REPCJI DEKE SZX XT XNHETCJCNPI, RIJ TE RIPDTCRCAEA AXT UIQCXKJI AXT OKX
 HXKPCJEKE XJ PEVI AX 1937 TE HEKXE AX TCSZCAEK TE KXvITZRCIJ, AXNPIKETCLEJAI E TE RTENX IQKXKE V OERCTCHEJAI RIJ XTTI XT DINHXKCIK
 HKCZJOI OKEJSZCNHE."""
 
-frec= ['e','a','o','l'] 
+frec= ['e','a'] 
 
-def crearArrays():
+def crearArrays(): #Genera un diccionario donde se almacenan todas las letras por cada clave
     a={}
     k=0
     for i in range(65,91,1):
@@ -28,14 +28,14 @@ def crearArrays():
     a[c] = 0
     return a
 
-def anadirFrec(a):
+def anadirFrec(a): #Se rellena el diccionario con las frecuencias de las letras del texto
     for k in mensaje:
         if k != ' ' and k.isdigit() == False and k != ',' and k != '.' and k != '\n':
             a[k] = a[k] + 1
     ordA = sorted(a.items(), key=operator.itemgetter(1))
     return ordA      
 
-def traducir(a):
+def traducir(a): #Se cambian las dos letras con más frecuencia por las del array a
     i=0
     k= len(a)-1
     b={}
@@ -45,7 +45,7 @@ def traducir(a):
         k = k-1
     return b
 
-def cambiarTexto(a):
+def cambiarTexto(a): #Se cambian las letras del mensaje que se encuentren en a
     i = 0
     mn = mensaje
     lm= list(mn)
@@ -65,6 +65,9 @@ def recorrerArray(a):
     for i in a:
         print(i)
     return None
+
+#def main():
+    
 
 recorrerDic(traducir(anadirFrec(crearArrays())))
 cambiarTexto(traducir(anadirFrec(crearArrays())))
