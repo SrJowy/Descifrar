@@ -11,7 +11,22 @@ TCQKX XT REPCJI DEKE SZX XT XNHETCJCNPI, RIJ TE RIPDTCRCAEA AXT UIQCXKJI AXT OKX
 HXKPCJEKE XJ PEVI AX 1937 TE HEKXE AX TCSZCAEK TE KXvITZRCIJ, AXNPIKETCLEJAI E TE RTENX IQKXKE V OERCTCHEJAI RIJ XTTI XT DINHXKCIK
 HKCZJOI OKEJSZCNHE."""
 
-frec= ['e','a'] 
+"""con durruti moria el dirigente que, a su manera, mejor expresaba como combatir al fascismo desde un criterio de independencia
+de clase, a diferencia del colaboracionismo frentepopulista de la direccion anarquista.
+
+durruti fue un factor de primer orden en el papel de la clase obrera en catalunya en julio de 1936. pero durruti, como ocurre con
+las personalidades en la historia, no cayo del cielo. personificaba la tradicion revolucionaria de la clase obrera. su enorme
+popularidad entre la clase trabajadora, reflejada en el entierro multitudinario en barcelona el 22 de noviembre de 1936,
+muestra esa identificacion. su muerte fue sin duda un golpe objetivo al proceso revolucionario en marcha. sin durruti quedo mas
+libre el camino para que el estalinismo, con la complicidad del gobierno del frente popular y de la direccion anarquista,
+terminara en mayo de 1937 la tarea de liquidar la revolucion, desmoralizando a la clase obrera y facilitando con ello el posterior
+triunfo franquista.
+"""
+
+mn = list(mensaje)
+
+frec= ['e','a']
+
 
 def crearArrays(): #Genera un diccionario donde se almacenan todas las letras por cada clave
     a={}
@@ -47,27 +62,68 @@ def traducir(a): #Se cambian las dos letras con más frecuencia por las del arra
 
 def cambiarTexto(a): #Se cambian las letras del mensaje que se encuentren en a
     i = 0
-    mn = mensaje
-    lm= list(mn)
     for k in mn:
         if k in a:
-            lm[i] = a.get(k)
+            mn[i] = a.get(k)
         i = i+1
-    b = ''.join(lm)
-    print(b)
 
 def recorrerDic(a):
     for k,v in a.items():
         print(k,v)
-    return None
 
 def recorrerArray(a):
     for i in a:
-        print(i)
-    return None
+        print(i, end= ', ')
 
-#def main():
-    
+def imprimirMensaje(m):
+    print(''.join(m))
 
-recorrerDic(traducir(anadirFrec(crearArrays())))
-cambiarTexto(traducir(anadirFrec(crearArrays())))
+def sustituirLetra(p1,p2):
+    i = 0
+    while (i < len(mn)):
+        if (mn[i] == p1): mn[i] = p2
+        i = i+1
+
+def elegirPalabra():
+    print("")
+    imprimirMensaje(mn)
+    pal = input("Elige una palabra -> ")
+    mn_p = ''.join(mn)
+    if (pal in mn_p):
+        p1 = input("Elige la letra que quieres sustituir -> ")
+        p2 = input("Elige la letra por la que la quieres sustituir -> ")
+        frec.append(p2)
+        print("\nHasta ahora has usado: \n")
+        recorrerArray(frec)
+        print("")
+        sustituirLetra(p1,p2)
+
+
+
+def main():
+    salir = -1
+    cambiarTexto(traducir(anadirFrec(crearArrays())))
+    print("Se han sustituido las dos primeras letras del del texto con las primeras del array de frecuencias")
+    print("")
+    while (salir != '0'):
+        print("1- Elige una palabra para sustituir letras")
+        print("2- Imprimir mensaje")
+        print("3- Imprimir mensaje original")
+        print("4- Ver letras ya cambiadas")
+        print("0- Salir")
+        salir = input()
+        if (salir == '1'):
+            print("")
+            elegirPalabra()
+        elif (salir == '2'):
+            print("")
+            imprimirMensaje(mn)
+        elif (salir == '3'):
+            print("")
+            imprimirMensaje(mensaje)
+        elif (salir == '4'):
+            print("")
+            recorrerArray(frec)
+        print("")
+    return
+main()
