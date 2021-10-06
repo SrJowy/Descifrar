@@ -110,6 +110,7 @@ def main():
         print("2- Imprimir mensaje")
         print("3- Imprimir mensaje original")
         print("4- Ver letras ya cambiadas")
+        print("5- Sustituir palabras")
         print("0- Salir")
         salir = input()
         if (salir == '1'):
@@ -124,6 +125,9 @@ def main():
         elif (salir == '4'):
             print("")
             recorrerArray(frec)
+        elif (salir == '5'):
+            print("")
+            sustituirPalabras()
         print("")
     return
 main()
