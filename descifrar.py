@@ -67,7 +67,7 @@ def cambiarTexto(a): #Se cambian las letras del mensaje que se encuentren en a
             mn[i] = a.get(k)
         i = i+1
 
-def recorrerDic(a):
+def recorrerDic(a): #Sirve para recorrer diccionarios
     for k,v in a.items():
         print(k,v)
 
@@ -78,7 +78,7 @@ def recorrerArray(a):
 def imprimirMensaje(m):
     print(''.join(m))
 
-def sustituirLetra(p1,p2):
+def sustituirLetra(p1,p2): 
     i = 0
     while (i < len(mn)):
         if (mn[i] == p1): mn[i] = p2
@@ -97,8 +97,24 @@ def elegirPalabra():
         recorrerArray(frec)
         print("")
         sustituirLetra(p1,p2)
+    else:
+        print("\nEsa palabra no está en el texto")
 
-
+def sustituirPalabras():
+    print("")
+    imprimirMensaje(mn)
+    pal = input("Elige una palabra -> ")
+    mn_p = ''.join(mn)
+    if (pal in mn_p):
+        nPal = input("Escribe la palabra por la que la quieres sustituir -> ")
+        i = 0
+        while (i < len(nPal)):
+            if (nPal[i] not in frec):
+                sustituirLetra(pal[i],nPal[i])
+                frec.append(nPal[i])
+            i += 1
+    else:
+        print("\nEsa palabra no está en el texto")
 
 def main():
     salir = -1
